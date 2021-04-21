@@ -7,12 +7,6 @@ organization := "co.tala"
 scalaVersion := "2.12.8"
 crossScalaVersions := Seq(scalaVersion.value)
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
-
-resolvers ++= Seq(
-    "Tala Atlas Artifactory Snapshots" at "https://tala.jfrog.io/tala/maven-snapshot-local",
-    "Tala Atlas Artifactory Releases" at "https://tala.jfrog.io/tala/maven-release-local"
-)
-
 libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided
 
 scalacOptions := Seq(
@@ -25,14 +19,11 @@ scalacOptions := Seq(
     "-language:experimental.macros"
 )
 
-// The generated POM has a conflict, but this is not needed for this temporary solution
-publishArtifact in makePom := false
-
 publishTo := {
     val nexus = "https://tala.jfrog.io/tala/"
     if (isSnapshot.value) {
-        Some("snapshots" at nexus + "maven-snapshot-local")
+        Some("snapshots" at nexus + "tala-bintray-cache-snapshot")
     } else {
-        Some("releases" at nexus + "maven-release-local")
+        Some("releases" at nexus + "tala-bintray-cache-release")
     }
 }
