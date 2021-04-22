@@ -2,7 +2,7 @@ enablePlugins(SbtPlugin)
 
 name := """sbt-buildinfo"""
 description := "Clone of com.eed3si9n.sbt-buildinfo"
-version := "0.10.0-SNAPSHOT"
+version := "0.10.0"
 organization := "co.tala"
 scalaVersion := "2.12.8"
 crossScalaVersions := Seq(scalaVersion.value)
